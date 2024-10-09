@@ -4,5 +4,16 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		// 这里可以放置其他设置
+	},
+	"extensions": {
+		"recommendations": [
+			"shd101wyy.markdown-preview-enhanced", // Markdown Enhance
+			"yzhang.markdown-all-in-one" // Markdown All in One
+		],
+		"unwantedRecommendations": [
+			// 在这里添加你希望禁用的插件的标识符
+		]
+	}
 }
