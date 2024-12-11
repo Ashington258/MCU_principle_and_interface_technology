@@ -1,0 +1,53 @@
+{
+    "TIMER": {
+        "TH0": "TO INIT TIMER",
+        "TL0": "TO INIT TIMER",
+        "TMOD": ["CATE", "C/T", "M1", "M0", "GATE", "C/T", "M1", "M0"],
+        "TCON": ["TF1", "TR1", "TF0", "TR0", "IE1", "IT1", "IE0", "IT0"],
+        "MOD":{
+            "MOD1":["TL0", "TH0","2^16-[TH0,TL0]"],
+            "MOD2":["TH0->TL0","ARR","2^8 - TH0"],
+            "MOD3":["SPLIT"]
+    },
+    "SERIAL": {
+        "SCON": ["SM0", "SM1", "SM2", "REN", "TB8", "RB8", "TI", "RI"],
+        "PCON": ["SMOD", "SMOD0", "_", "POF", "GF1", "GF0", "PD", "IDL"],
+        "MOD": {
+                "MOD0":{
+                    "DATA_BITS": 8,
+                    "BAUD_RATE": "1/12 * f_osc"
+                },
+                "MOD1":{
+                    "DATA_BITS": 10,
+                    "BAUD_RATE": "2^SMOD/32 * (T1 overflow_speed)",
+                    "T1 overflow_speed":["f_machine / (2^16-init_value)","f_machine / (2^8-init_value)"]
+                },
+                "MOD2":{
+                    "DATA_BITS": 11,
+                    "BAUD_RATE": "2^SMOD/64 * f_osc"
+                },
+                "MOD3":{
+                    "DATA_BITS": 11,
+                    "BAUD_RATE": "2^SMOD/32 * (T1 overflow_speed)"
+                }
+            },
+            "MOD0": ["D0", "D1", "D2", "D3", "D4", "D5", "D6", "D7"],
+            "MOD1": ["_", "D0", "D1", "D2", "D3", "D4", "D5", "D6", "D7", "-"],
+            "MOD2": ["_", "D0", "D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "-"]
+        },
+    "INTERRUPT": {
+        "IE": ["EA", "_", "_", "ES", "ET1", "EX1", "ET0", "EX0"],
+        "IP": ["_", "_", "_", "PS", "PT1", "PX1", "PT0", "PX0"],
+        "TCON": ["TF1", "TR1", "TF0", "TR0", "IE1", "IT1", "IE0", "IT0"],
+        "SCON": ["SM0", "SM1", "SM2", "REN", "TB8", "RB8", "TI", "RI"],
+        "IT_SOURCE":{
+            "INT0":"0003H",
+            "T0":"000BH",
+            "INT1":"0013H",
+            "T1":"001BH",
+            "SERIAL":"0023H"
+        }
+    },
+    "PSW": ["CY", "AC", "F0", "RS1", "RS0", "OV", "_", "P"]
+    }
+}
